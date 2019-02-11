@@ -1,0 +1,80 @@
+{
+  "name": "mrq",
+  "label": "MEZERLAB: mrQ - evaluation of MTV and VIP",
+  "description": "mrQ is a software package designed to calculate MR parameters (T1 and PD) using spoiled gradient echo scans (SPGR, FLASH). Using T1 and PD maps, mrQ performs the evaluation of macromolecular tissue volume (MTV) and the apparent volume of the interacting water protons (VIP) as well as the water-surface interaction rate (SIR). This is version 2.1 of the mrQ software package.",
+  "cite": "Mezer A, Yeatman JD, Stikov N, Kay KN, Cho NJ, Dougherty RF, Perry LM, Parvizi J, Hua LH, Butts-Pauly K and Wandell BA. Quantifying the local tissue volume and composition in individual brains with magnetic resonance imaging. Nature Medicine 19, 1667-1672 (2013). http://www.nature.com/nm/journal/v19/n12/full/nm.3390.html?WT.ec_id=NM-201312.  Patent: Mezer, Aviv A., Robert F. Dougherty, and Brian A. Wandell. Methods for Detecting Abnormalities and Degenerative Processes in Soft Tissue Using Magnetic Resonance Imaging (MRI). The Board Of Trustees Of The Leland Stanford Junior University, assignee. Patent US9002428 B2. 7 Apr. 2015.",
+  "author": "Aviv Mezer & Brian Wandell form the Mezer Lab Wandell Lab & Vistasoft Team",
+  "maintainer": "VPNL Stanford",
+  "url": "https://github.com/mezera/mrQ",
+  "source": "https://github.com/VPNL/fwgear-mrq",
+  "license": "MIT",
+  "flywheel": "0",
+  "version": "0.1.0",
+  "custom": {
+    "docker-image": "vpnl/mrq:0.1.0",
+    "flywheel": {
+      "suite": "VPNL"
+    }
+  },
+  "inputs": {
+    "api_key": {
+      "description": "Calling user's api key. This is used in the code to provide user-level access via the SDK.",
+      "base": "api-key",
+      "read-only": true
+    },
+    "reference_image": {
+      "description": "The image to which the resulting data will be aligned.",
+      "base": "file",
+      "type": "nifti",
+      "optional": true
+    },
+    "b1fieldmap": {
+      "description": "A B1 fieldmap in SPGR space.",
+      "base": "file",
+      "type": "nifti",
+      "optional": true
+    }
+  },
+  "config": {
+    "session_split": {
+      "description": "Path to the session that contains other data. E.g., vpnl/longi/CS11/19652 - then we know to also look in that session for some of the input data.",
+      "optional": true,
+      "type": "string"
+    },
+    "autoacpc": {
+      "description": "If a reference image is provided, the alignment in the SPGR section will be performed using that image. If no image is provided, mrQ will perform the AC-PC alignment automatically (default, 'autoacpc'=1), unless the user decides to do so manually (change to 'autoacpc'=0). Though the default is automatic, we recommend manual alignment when possible.",
+      "type": "boolean",
+      "default": true
+    },
+    "lw-model": {
+      "description": "Run the linear weighted model for the T1-M0 fit.",
+      "type": "boolean",
+      "default": true
+    },
+    "lsq-model": {
+      "description": "Enter 1 to run the least squares model for the T1-M0 fit, or 0 not to (default).",
+      "type": "boolean",
+      "default": false
+    },
+    "r1_bm": {
+      "description": "Use R1 to create a BM for SEIR (might improve registration in some subjects)",
+      "type": "boolean",
+      "default": true
+    },
+    "polydeg": {
+      "description": "Scalar for the polynomial degree to fit to the Gain (default is 3)",
+      "type": "number",
+      "default": 3
+    },
+    "fieldstrength": {
+      "description": "Field strength of the scanner.",
+      "type": "number",
+      "defautl": 3
+    },
+    "pdfit_method": {
+      "description": "Method for M0-to-PD fit. Enter 1 for T1 single coil (default), 2 for multi-coil, or 3 for both.",
+      "type": "number",
+      "defautl": 1
+    }
+  }
+}
