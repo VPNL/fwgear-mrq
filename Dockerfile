@@ -47,9 +47,9 @@ RUN mkdir -p ${FLYWHEEL}
 
 # ADD the Matlab Stand-Alone (MSA) into the container.
 # Must be compiled prior to gear build - this will fail otherwise
-# COPY bin/fwgear_mrq \
-#      gear/bin/run_fwgear_mrq_Run.sh \
-#      /usr/local/bin/
+COPY bin/fwgear_mrq \
+     build/bin/run_fwgear_mrq.sh \
+     /usr/local/bin/
 
 # Copy and configure run script and metadata code
 COPY fix_links.sh /usr/local/bin/fix_links.sh
