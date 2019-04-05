@@ -29,7 +29,7 @@
       "optional": true
     },
     "b1fieldmap": {
-      "description": "A B1 fieldmap in SPGR space.",
+      "description": "A B1 fieldmap in SPGR space. Note that the input data must be from the same session as the B1 fieldmap.",
       "base": "file",
       "type": "nifti",
       "optional": true
@@ -37,7 +37,7 @@
   },
   "config": {
     "session_split": {
-      "description": "Path to the session that contains other data. E.g., vpnl/longi/CS11/19652 - then we know to also look in that session for some of the input data.",
+      "description": "Resolver Path to the session that contains other data. E.g., kalanit/longitudinal/CS11/19652 - then we know to also look in that session for some of the input data.",
       "optional": true,
       "type": "string"
     },
@@ -69,12 +69,22 @@
     "fieldstrength": {
       "description": "Field strength of the scanner.",
       "type": "number",
-      "defautl": 3
+      "default": 3
     },
     "pdfit_method": {
       "description": "Method for M0-to-PD fit. Enter 1 for T1 single coil (default), 2 for multi-coil, or 3 for both.",
       "type": "number",
-      "defautl": 1
+      "default": 1
+    },
+    "spgr_regex": {
+      "description": "Regular expression which will be used to find the matching SPGR acquisitions. By default we will look for any acquisition label that begins with 'SPGR'",
+      "type": "string",
+      "default": "^SPGR"
+    },
+    "ir_regex": {
+      "description": "Regular expression which will be used to find the matching IR (inversion recovery) acquisitions. By default we will look for any acquisition label that begins with 'IR'",
+      "type": "string",
+      "default": "^IR"
     }
   }
 }
