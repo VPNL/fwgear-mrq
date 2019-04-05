@@ -52,6 +52,8 @@ RUN mkdir -p ${FLYWHEEL}
 #      /usr/local/bin/
 
 # Copy and configure run script and metadata code
+COPY fix_links.sh /usr/local/bin/fix_links.sh
+RUN chmod +x /usr/local/bin/fix_links.sh
 COPY run.py ${FLYWHEEL}/run
 COPY manifest.json ${FLYWHEEL}/manifest.json
 RUN chmod +x ${FLYWHEEL}/run
