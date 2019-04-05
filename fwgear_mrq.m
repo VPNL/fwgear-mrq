@@ -1,4 +1,4 @@
-function fwgear_mrq(config_file_path)
+function fwgear_mrq(config_file_path, output_dir)
 
 %{
     0. Parse the configuration file for inputs and config.
@@ -14,7 +14,10 @@ function fwgear_mrq(config_file_path)
 %% Set path variables
 
 % Path where the outputs will be stored.
-output_dir = fullfile(fileparts(config_file_path), 'output');
+if ~exist('output_dir', 'var')
+    output_dir = fullfile(fileparts(config_file_path), 'output');
+end
+
 if ~exist(output_dir, 'dir')
     disp('Creating output directory');
     mkdir(output_dir);
