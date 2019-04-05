@@ -123,26 +123,25 @@ for ii = 1:numel(input_acquisitions)
     acquisition = fw.get(input_acquisitions{ii}.id);
     for ff = 1:numel(acquisition.files)
         if strcmpi(acquisition.files{ff}.type, 'nifti')
-            
+
             % Grab the info to build the resolve path
             proj_label = fw.get(acquisition.parents.project).label;
             session_label = fw.get(acquisition.parents.session).label;
             resolvepath = [ acquisition.parents.group, '/', ...
                         proj_label, '/', ...
-                        session_label, '/', ... 
+                        session_label, '/', ...
                         acquisition.label, '/', ...
                         acquisition.files{ff}.name ];
             fprintf('  %s...\n', resolvepath);
-            
+
             % Download the file
             acquisition.files{ff}.download(fullfile(raw_dir, acquisition.files{ff}.name));
-            
+
             % Build input file struct for analysis_info output
             input_files{ii} = struct;
             input_files{ii}.name = acquisition.files{ff}.name;
             input_files{ii}.acquisition = acquisition.id;
-            input_files{ii}.acquisition_label = acquisition.label;
-            input_files{ii}.path = acquisition.label;
+            input_files{ii}.path = resolvepath;
         end
     end
 end
@@ -210,11 +209,6 @@ else
 end
 
 
-% 0.2 Fix soft links in output directory
-status = system(['fix_links.sh ' output_dir]);
-disp(status);
-
-
 % 1. Add info to analysis info, or to a file
 % analysis.updateInfo(jsonencode(analysis_info)); # This does not work as
 % there are many "null" fields in the output, which the API rejects, thus
@@ -229,8 +223,10 @@ copyfile(fullfile(subject_output_dir, 'OutPutFiles_1', 'summary_BiasMaps.jpg'), 
 copyfile(fullfile(subject_output_dir, 'OutPutFiles_1', 'T1w', 'T1w.nii.gz'), fullfile(output_dir, [ subject.code '_' session.label '-T1.nii.gz']));
 
 
-% 3. Zip outputs
+% 3. Fix links and zip outputs
 disp('Compressing outputs...');
+status = system(['fix_links.sh ' output_dir]);
+disp(status);
 zip(fullfile(output_dir, [subject.code, '_', session.label, '-mrQ_Output.zip']), subject_output_dir);
 
 
