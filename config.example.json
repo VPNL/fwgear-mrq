@@ -1,0 +1,45 @@
+{
+  "inputs": {
+    "api_key": {
+      "key": "API_KEY"
+    },
+    "reference_image": {
+      "hierarchy": {
+        "type": "acquisition",
+        "id": ""
+      },
+      "base": "file",
+      "location": {
+        "path": "/flywheel/v0/input/reference_image/<ref>.nii.gz",
+        "name": "<ref>.nii.gz"
+      }
+    },
+    "b1fieldmap": {
+      "hierarchy": {
+        "type": "acquisition",
+        "id": ""
+      },
+      "base": "file",
+      "location": {
+        "path": "/flywheel/v0/input/b1fieldmap/<fmap>.nii.gz",
+        "name": "<fmap>.nii.gz"
+      }
+    }
+  },
+  "destination": {
+    "type": "analysis",
+    "id": "5c759879bf0b4800363579da"
+  },
+  "config": {
+    "session_split": "",
+    "autoacpc": true,
+    "lw-model": true,
+    "lsq-model": false,
+    "r1_bm": true,
+    "polydeg": 3,
+    "fieldstrength": 3,
+    "pdfit_method": 1,
+    "spgr_regex": "^SPGR",
+    "ir_regex": "^IR"
+  }
+}
