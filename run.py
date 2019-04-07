@@ -6,6 +6,7 @@
 if __name__ == '__main__':
 
     import os
+    import json
     import logging
     import shutil
     import argparse
@@ -36,14 +37,14 @@ if __name__ == '__main__':
     args = ap.parse_args()
 
     # RUN MATLAB CODE
-    matlab_binary = '/usr/local/bin/run_fLocGearRun.sh'
+    matlab_binary = '/usr/local/bin/fwgear_mrq'
     matlab_library = '/opt/mcr/v93'
 
     with open('/dockerenv.json', 'r') as f:
             environ = json.load(f)
 
-    run_command = [matlab_binary, matlab_library, args.config_file, args.output_dir]
-    status = subprocess.check_call(run_command, evn=environ)
+    run_command = [matlab_binary, args.config_file, args.output_dir]
+    status = subprocess.check_call(run_command, env=environ)
 
     # EXIT
     if status == 0:
