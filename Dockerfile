@@ -29,7 +29,7 @@ ENV ANTSPATH=/usr/lib/ants
 ENV DISPLAY=:1.0
 ENV FSLMULTIFILEQUIT=TRUE
 ENV POSSUMDIR=/usr/share/fsl/5.0
-ENV LD_LIBRARY_PATH=/usr/lib/fsl/5.0
+ENV LD_LIBRARY_PATH=/usr/lib/fsl/5.0:/usr/lib:/usr/lib/x86_64-linux-gnu:/opt/mcr/v93/runtime/glnxa64:/opt/mcr/v93/bin/glnxa64:/opt/mcr/v93/sys/os/glnxa64:/opt/mcr/v93/sys/opengl/lib/glnxa64
 ENV PATH=/usr/lib/fsl/5.0:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV FSLTCLSH=/usr/bin/tclsh
 ENV FSLMACHINELIST=
@@ -47,7 +47,7 @@ RUN mkdir -p ${FLYWHEEL}
 
 # ADD the Matlab Stand-Alone (MSA) into the container.
 # Must be compiled prior to gear build - this will fail otherwise
-COPY bin/fwgear_mrq \
+COPY build/bin/fwgear_mrq \
      build/bin/run_fwgear_mrq.sh \
      /usr/local/bin/
 
