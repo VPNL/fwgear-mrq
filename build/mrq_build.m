@@ -36,10 +36,11 @@ disp('Adding paths to build scope...');
 restoredefaultpath;
 addpath(genpath(spm_path));
 addpath(genpath(fullfile(pwd, 'source_code')));
+javaaddpath(fullfile(pwd, 'source_code', 'flywheel-sdk', 'api', 'rest-client.jar'));
 
 % Compile
 disp('Running compile code...');
-mcc -v -R -nodisplay -m ../../fwgear_mrq.m -d ./bin
+mcc -v -R -nodisplay -m ../fwgear_mrq.m -a ./source_code/flywheel-sdk -a ./source_code/vistasoft/mrDiffusion -a ./source_code/mrQ/SEIR/T1FitNLSPR.m -d ./bin
 
 % Clean up
 disp('Cleaning up...')
