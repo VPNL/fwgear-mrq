@@ -15,7 +15,7 @@ if ~strcmpi(pwd, compileDir)
 end
 
 % Check for spm8
-spm_path = fileparts(which('spm'))
+spm_path = fileparts(which('spm'));
 if isempty(spm_path)
   error('Please add the SPM8 to your path prior to building this code!')
 end

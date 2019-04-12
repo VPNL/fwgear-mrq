@@ -6,14 +6,17 @@
   "author": "Aviv Mezer & Brian Wandell form the Mezer Lab Wandell Lab & Vistasoft Team",
   "maintainer": "VPNL Stanford",
   "url": "https://github.com/mezera/mrQ",
-  "source": "https://github.com/VPNL/fwgear-mrq",
+  "source": "https://github.com/scitran-apps/mrq",
   "license": "MIT",
   "flywheel": "0",
   "version": "0.1.0",
   "custom": {
-    "docker-image": "vpnl/mrq:0.1.0",
+    "docker-image": "scitran/mrq:0.1.0",
     "flywheel": {
-      "suite": "VPNL"
+      "suite": "SciTran"
+    },
+    "gear-builder": {
+      "image": "scitran/mrq:0.1.0"
     }
   },
   "inputs": {
