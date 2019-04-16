@@ -26,7 +26,8 @@ system('mkdir source_code')
 system('git clone https://github.com/vistalab/vistasoft source_code/vistasoft');
 system('git clone https://github.com/gllmflndn/JSONio.git source_code/JSONio');
 system('git clone https://github.com/xiangruili/dicm2nii.git source_code/dcm2nii');
-system('git clone https://github.com/mezera/mrQ.git source_code/mrQ');
+%system('git clone https://github.com/mezera/mrQ.git source_code/mrQ');
+system('git clone -b poly https://github.com/vistalab/mrQ.git source_code/mrQ');
 system('git clone https://github.com/kendrickkay/knkutils.git source_code/knkutils');
 system('wget https://github.com/flywheel-io/core/releases/download/5.0.4/flywheel-matlab-sdk-5.0.4.zip -O source_code/flywheel-matlab-sdk.zip && unzip source_code/flywheel-matlab-sdk.zip -d source_code/ && rm -f source_code/flywheel-matlab-sdk.zip');
 
