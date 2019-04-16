@@ -80,7 +80,7 @@ ir_regex   = raw_config.config.ir_regex;
 % having additional data that should be used for this analysis. We then append
 % to the list of acquisitions the acquisitions from the "session_split"
 % session.
-if ~isempty(raw_config.config.session_split)
+if isfield(raw_config.config, 'session_split') && ~isempty(raw_config.config.session_split)
     fprintf('Looking for additonal acquisitions in: %s\n', (raw_config.config.session_split));
     s2 = fw.lookup(raw_config.config.session_split);
     s2acquisitions = fw.getSessionAcquisitions(s2.id);
