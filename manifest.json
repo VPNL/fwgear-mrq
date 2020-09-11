@@ -3,20 +3,20 @@
   "label": "MRQ - Quantifying the local tissue volume and composition in individual brains",
   "description": "mrQ is a software package designed to calculate MR parameters (T1 and PD) using spoiled gradient echo scans (SPGR, FLASH). Using T1 and PD maps, mrQ performs the evaluation of macromolecular tissue volume (MTV) and the apparent volume of the interacting water protons (VIP) as well as the water-surface interaction rate (SIR). This is version 2.1 of the mrQ software package.",
   "cite": "Mezer A, Yeatman JD, Stikov N, Kay KN, Cho NJ, Dougherty RF, Perry LM, Parvizi J, Hua LH, Butts-Pauly K and Wandell BA. Quantifying the local tissue volume and composition in individual brains with magnetic resonance imaging. Nature Medicine 19, 1667-1672 (2013). http://www.nature.com/nm/journal/v19/n12/full/nm.3390.html?WT.ec_id=NM-201312.  Patent: Mezer, Aviv A., Robert F. Dougherty, and Brian A. Wandell. Methods for Detecting Abnormalities and Degenerative Processes in Soft Tissue Using Magnetic Resonance Imaging (MRI). The Board Of Trustees Of The Leland Stanford Junior University, assignee. Patent US9002428 B2. 7 Apr. 2015.",
-  "author": "Aviv Mezer & Brian Wandell form the Mezer Lab Wandell Lab & Vistasoft Team",
+  "author": "Aviv Mezer & Brian Wandell from the Mezer Lab, Wandell Lab, and Vistasoft Team",
   "maintainer": "Michael Perry <lmperry@stanford.edu>",
   "url": "https://github.com/mezera/mrQ",
   "source": "https://github.com/scitran-apps/mrq",
   "license": "MIT",
   "flywheel": "0",
-  "version": "0.1.2",
+  "version": "0.1.3_2.1",
   "custom": {
-    "docker-image": "scitran/mrq:0.1.2",
+    "docker-image": "scitran/mrq:0.1.3_2.1",
     "flywheel": {
-      "suite": "VISTA Lab"
+      "suite": "Mezer Human Brain Biophysics Lab"
     },
     "gear-builder": {
-      "image": "scitran/mrq:0.1.2",
+      "image": "scitran/mrq:0.1.3_2.1",
       "category": "analysis"
     }
   },

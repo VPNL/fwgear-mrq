@@ -45,7 +45,11 @@ mcc -v -R -nodisplay -m ../fwgear_mrq.m -a ./source_code/flywheel-sdk -a ./sourc
 
 % Clean up
 disp('Cleaning up...')
-rmdir(fullfile(pwd, 'source_code'), 's');
+try
+    rmdir(fullfile(pwd, 'source_code'), 's');
+catch
+    disp('Could not remove source_code directory');
+end
 
 disp('Done!');
 exit

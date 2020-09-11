@@ -217,13 +217,14 @@ jsonwrite(fullfile(output_dir,  [ subject.code '_' session.label '-analysis_info
 
 
 % 2. Copy png images and T1w.nii.gz to the top level
-copyfile(fullfile(subject_output_dir, 'OutPutFiles_1', 'summary.jpg'), fullfile(output_dir, [ subject.code '_' session.label '-summary.jpg' ]));
+disp('Promoting outputs to the top-level...');
+copyfile(fullfile(subject_output_dir, 'OutPutFiles_1', 'summary.jpg'), fullfile(output_dir, [ subject.code '_' session.label '-summary.jpg' ]), 'f');
 copyfile(fullfile(subject_output_dir, 'OutPutFiles_1', 'summary_BiasMaps.jpg'), fullfile(output_dir, [ subject.code '_' session.label '-summary_BiasMaps.jpg' ]), 'f');
 copyfile(fullfile(subject_output_dir, 'OutPutFiles_1', 'T1w', 'T1w.nii.gz'), fullfile(output_dir, [ subject.code '_' session.label '-T1.nii.gz']), 'f');
 
 
 % 3. Fix links and zip outputs
-disp('Compressing outputs...');
+disp('Generating output archive...');
 status = system(['fix_links.sh ' output_dir]);
 disp(status);
 zip(fullfile(output_dir, [subject.code, '_', session.label, '-mrQ_Output.zip']), subject_output_dir);
